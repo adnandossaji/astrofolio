@@ -1,0 +1,134 @@
+---
+// Recipe card component for displaying recipe previews
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    recipe: CollectionEntry<'recipes'>;
+}
+
+const { recipe } = Astro.props;
+const { title, description, image, prepTime, cookTime, tags } = recipe.data;
+const { slug } = recipe;
+---
+
+<a href={`/recipes/${slug}`} class="recipe-card">
+    <div class="image-container">
+        <img src={image} alt={title} />
+        <div class="time-info">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Prep: {prepTime}</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg> Cook: {cookTime}</span>
+        </div>
+    </div>
+    <div class="content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        {tags && tags.length > 0 && (
+            <div class="tags">
+                {tags.slice(0, 3).map(tag => (
+                    <span class="tag">{tag}</span>
+                ))}
+            </div>
+        )}
+    </div>
+</a>
+
+<style>
+    .recipe-card {
+        display: block;
+        background-color: var(--color-card);
+        border-radius: var(--rounded-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.2s;
+        text-decoration: none;
+        color: var(--color-text);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--color-border);
+    }
+
+    .recipe-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .image-container {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+    }
+
+    .recipe-card:hover .image-container img {
+        transform: scale(1.05);
+    }
+
+    .time-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+        color: white;
+        padding: 16px 12px 12px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    .time-info span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text);
+        line-height: 1.3;
+    }
+
+    p {
+        color: var(--color-text-light);
+        margin-bottom: 1.25rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        flex: 1;
+    }
+    
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--color-primary);
+        background-color: rgba(14, 165, 233, 0.1);
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--rounded-sm);
+    }
+</style> 

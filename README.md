@@ -2,18 +2,17 @@
 
 A modern, responsive portfolio template built with Astro, perfect for developers, designers, creatives, and food bloggers. Astrofolio combines lightning-fast performance with beautiful design and user-friendly features.
 
-![Homepage](https://github.com/adnandossaji/astrofolio/.github/resources/Screenshot 2025-04-27 at 9.21.31 PM.png)
+<div align="center">
+  <img src="https://github.com/adnandossaji/astrofolio/blob/main/.github/resources/Screenshot%202025-04-27%20at%209.21.31%20PM.png?raw=true" alt="Homepage" width="80%" />
+</div>
 
 ## 📸 Screenshots
 
-### Recipe Page
-![Recipe Page](https://github.com/adnandossaji/astrofolio/.github/resources/Screenshot 2025-04-27 at 9.21.54 PM.png)
-
-### Gallery
-![Gallery](https://github.com/adnandossaji/astrofolio/.github/resources/Screenshot 2025-04-27 at 9.22.04 PM.png)
-
-### Mobile View
-![Mobile View](https://github.com/adnandossaji/astrofolio/.github/resources/Screenshot 2025-04-27 at 9.22.55 PM.png)
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+  <img src="https://github.com/adnandossaji/astrofolio/blob/main/.github/resources/Screenshot%202025-04-27%20at%209.21.54%20PM.png?raw=true" alt="Recipe Page" width="48%" />
+  <img src="https://github.com/adnandossaji/astrofolio/blob/main/.github/resources/Screenshot%202025-04-27%20at%209.22.04%20PM.png?raw=true" alt="Gallery" width="48%" />
+  <img src="https://github.com/adnandossaji/astrofolio/blob/main/.github/resources/Screenshot%202025-04-27%20at%209.22.55%20PM.png?raw=true" alt="Mobile View" width="30%" style="margin: 0 auto;" />
+</div>
 
 ## ✨ Features
 
@@ -109,8 +108,6 @@ datePublished: 2023-05-20
 ---
 ```
 
-![Recipe Format Example](https://via.placeholder.com/600x400/FFFFFF/000000?text=Recipe+Format+Example)
-
 ### Adding Gallery Images
 
 #### Simple Method
@@ -146,7 +143,7 @@ Featured images appear first in the gallery, followed by the most recently added
 
 ### Styling
 
-Astrofolio uses custom CSS variables for theming. Edit the global styles in `src/styles/global.css` to customize the look and feel.
+Astrofolio uses custom CSS variables for theming. Edit the global styles in the layout file to customize the look and feel.
 
 ### Components
 

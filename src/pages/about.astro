@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <div class="container">
+        <header class="page-header">
+            <h1>About Astrofolio</h1>
+        </header>
+        
+        <div class="about-content">
+            <section class="about-section">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581349485608-9469926a8e5e?q=80&w=1170&auto=format&fit=crop" alt="Cooking in kitchen" />
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>
+                        Welcome to Astrofolio, a culinary haven born out of a deep passion for food and a desire to share delicious recipes with home cooks around the world. Founded in 2023, Astrofolio has quickly become a go-to resource for food enthusiasts seeking inspiration in their kitchens.
+                    </p>
+                    <p>
+                        Our journey began with a simple belief: cooking should be accessible, enjoyable, and rewarding for everyone. Whether you're a novice in the kitchen or a seasoned chef, our goal is to provide you with recipes that excite your taste buds and bring joy to your dining table.
+                    </p>
+                </div>
+            </section>
+            
+            <section class="mission-section">
+                <div class="mission-text">
+                    <h2>Our Mission</h2>
+                    <p>
+                        At Astrofolio, we're on a mission to demystify cooking and make it an enjoyable part of everyday life. We believe that a good recipe is more than just a set of instructions—it's a story, a tradition, and an opportunity to create memories.
+                    </p>
+                    <p>
+                        We're committed to:
+                    </p>
+                    <ul>
+                        <li>Creating recipes that are reliable, tested, and delicious</li>
+                        <li>Offering clear instructions that are easy to follow</li>
+                        <li>Featuring diverse cuisines and ingredients to expand your culinary horizons</li>
+                        <li>Building a community of food lovers who share our passion for good food</li>
+                    </ul>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?q=80&w=1074&auto=format&fit=crop" alt="Fresh ingredients" />
+                </div>
+            </section>
+            
+            <section class="team-section">
+                <h2>Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=1170&auto=format&fit=crop" alt="Chef Sarah" />
+                        <h3>Chef Sarah</h3>
+                        <p>Head Chef & Founder</p>
+                        <p>With over 15 years of culinary experience, Sarah brings her expertise and creativity to every recipe on Astrofolio.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://plus.unsplash.com/premium_photo-1673830186289-b4d2619212b3?w=700&auto=format&fit=crop&q=60" alt="Chef Adnan" />
+                        <h3>Chef Adnan</h3>
+                        <p>Recipe Maintainer</p>
+                        <p>A specialist in international cuisines, Michael is passionate about bringing authentic flavors from around the world to your kitchen.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="contact-section">
+                <h2>Get in Touch</h2>
+                <p>
+                    We love hearing from our community! Whether you have a question about a recipe, a suggestion for content, or just want to say hello, feel free to reach out to us.
+                </p>
+                <a href="mailto:hello@kapodeats.com" class="btn-primary">Contact Us</a>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .page-header {
+        text-align: center;
+        margin: 2rem 0 4rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .about-content {
+        max-width: 1000px;
+        margin: 0 auto 4rem;
+    }
+    
+    .about-section,
+    .mission-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+        align-items: center;
+    }
+    
+    .mission-text {
+        order: 2;
+    }
+    
+    .mission-image {
+        order: 1;
+    }
+    
+    h2 {
+        margin-bottom: 1.5rem;
+        color: var(--color-primary);
+    }
+    
+    p {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+    
+    ul {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    
+    li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+    }
+    
+    .about-image img,
+    .mission-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-section {
+        margin-bottom: 4rem;
+        text-align: center;
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .team-member {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+    }
+    
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+    
+    .team-member img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .team-member h3 {
+        margin: 1.5rem 0 0.5rem;
+        font-size: 1.5rem;
+    }
+    
+    .team-member p {
+        padding: 0 1.5rem 1.5rem;
+        margin-bottom: 0;
+    }
+    
+    .team-member p:first-of-type {
+        color: var(--color-primary);
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-section {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .btn-primary {
+        display: inline-block;
+        background-color: var(--color-primary);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    }
+    
+    .btn-primary:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+        .about-section,
+        .mission-section,
+        .team-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .mission-text {
+            order: 1;
+        }
+        
+        .mission-image {
+            order: 2;
+        }
+        
+        .about-image img,
+        .mission-image img {
+            height: 300px;
+        }
+    }
+    
+    .page-header p {
+        color: var(--color-text-light);
+    }
+</style> 

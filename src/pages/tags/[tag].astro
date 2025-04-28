@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const recipes = await getCollection('recipes');
+    const allTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags))];
+    
+    return allTags.map(tag => {
+        const filteredRecipes = recipes.filter(recipe => recipe.data.tags.includes(tag));
+        return {
+            params: { tag },
+            props: { recipes: filteredRecipes, tag },
+        };
+    });
+}
+
+const { recipes, tag } = Astro.props;
+---
+
+<Layout>
+    <div class="container">
+        <header class="page-header">
+            <h1>Recipes tagged: <span class="highlight">{tag}</span></h1>
+            <p>Browse our collection of {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'} tagged with "{tag}"</p>
+        </header>
+
+        <div class="recipes-grid">
+            {recipes.map(recipe => (
+                <RecipeCard recipe={recipe} />
+            ))}
+        </div>
+        
+        <div class="back-link">
+            <a href="/recipes">← Back to all recipes</a>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .page-header {
+        text-align: center;
+        margin: 2rem 0 4rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight {
+        color: var(--color-primary);
+    }
+    
+    .page-header p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+    
+    .recipes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .back-link {
+        margin-bottom: 4rem;
+    }
+    
+    .back-link a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.3s;
+    }
+    
+    .back-link a:hover {
+        color: #ff5252;
+    }
+    
+    @media (max-width: 768px) {
+        .recipes-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    }
+</style> 

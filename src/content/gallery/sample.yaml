@@ -1,0 +1,7 @@
+title: Sample Image
+description: This is a sample image with custom metadata.
+image: /images/gallery/image-1.png
+alt: A sample image displaying how metadata works
+category: Sample
+featured: true
+dateAdded: "2023-06-15" 

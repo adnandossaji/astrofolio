@@ -1,0 +1,93 @@
+---
+interface Props {
+  title?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const { 
+  title = "About Astrofolio",
+  imageSrc = "https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=1974&auto=format&fit=crop", 
+  imageAlt = "Cooking ingredients" 
+} = Astro.props;
+---
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>{title}</h2>
+        <p>
+          Welcome to Astrofolio, your go-to destination for delicious, easy-to-follow recipes that bring joy to your table. Our passion for food drives us to create and curate recipes that inspire home cooks of all skill levels.
+        </p>
+        <p>
+          Whether you're looking for quick weeknight dinners, impressive dishes for entertaining, or sweet treats to satisfy your cravings, we've got you covered with recipes that use fresh ingredients and clear instructions.
+        </p>
+        <a href="/about" class="btn-secondary">Learn More</a>
+      </div>
+      <div class="about-image">
+        <img src={imageSrc} alt={imageAlt} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 4rem 0;
+    background-color: var(--color-bg-alt);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image {
+      order: -1;
+    }
+  }
+</style> 

@@ -1,0 +1,92 @@
+---
+import { getGallery } from '../lib/gallery';
+import GalleryGrid from './GalleryGrid.astro';
+
+// Get gallery images and sort them
+const galleryImages = await getGallery();
+
+// Sort by date (newest first) and limit to 3
+const latestImages = galleryImages
+  .sort((a, b) => {
+    if (a.dateAdded && b.dateAdded) {
+      return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+    }
+    return 0;
+  })
+  .slice(0, 3);
+---
+
+<section class="featured-gallery">
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest Image</h2>
+      <a href="/gallery" class="view-all">View All Images</a>
+    </div>
+    
+    {latestImages.length > 0 ? (
+      <GalleryGrid images={latestImages} columns={3} />
+    ) : (
+      <div class="empty-gallery">
+        <p>No gallery images found. Add some to get started!</p>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .featured-gallery {
+    padding: 2rem 0 4rem;
+    background-color: var(--color-bg-alt);
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .view-all {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+  }
+
+  .view-all:hover {
+    color: #1e40af;
+  }
+
+  .view-all::after {
+    content: "→";
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+  }
+
+  .view-all:hover::after {
+    transform: translateX(4px);
+  }
+
+  .empty-gallery {
+    background-color: var(--color-card);
+    border-radius: var(--rounded-md);
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 768px) {
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style> 

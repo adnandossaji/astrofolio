@@ -1,0 +1,81 @@
+---
+import { getAllRecipes } from '../lib/recipes';
+import RecipeCard from './RecipeCard.astro';
+
+const recipes = await getAllRecipes();
+---
+
+<section class="featured-recipes">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Recipes</h2>
+            <a href="/recipes" class="view-all">View All Recipes</a>
+        </div>
+        
+        <div class="recipes-grid">
+            {recipes.map(recipe => (
+                <RecipeCard recipe={recipe} />
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .featured-recipes {
+        padding: 2rem 0 4rem;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .view-all {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s;
+    }
+
+    .view-all:hover {
+        color: #1e40af;
+    }
+
+    .view-all::after {
+        content: "→";
+        margin-left: 0.5rem;
+        transition: transform 0.3s;
+    }
+
+    .view-all:hover::after {
+        transform: translateX(4px);
+    }
+
+    .recipes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .recipes-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    }
+</style> 
